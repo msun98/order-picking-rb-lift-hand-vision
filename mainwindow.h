@@ -191,12 +191,12 @@ private slots:
     void rev_data(QByteArray data);
     void write_log(QString str);
 
-    void connected_seiral();
-    void disconnected_seiral();
+//    void connected_seiral();
+//    void disconnected_seiral();
 
     void readyRead_udp();
-    void connected_udp();
-    void disconnected_udp();
+//    void connected_udp();
+//    void disconnected_udp();
 
     void newConnection_tcp();
     void readyRead_tcp();

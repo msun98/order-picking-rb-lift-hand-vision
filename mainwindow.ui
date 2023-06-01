@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="lift_motor">
      <attribute name="title">
@@ -5605,16 +5605,16 @@ background-color:rgb(255,255,255)</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
-        <widget class="QPushButton" name="bt_usb2_con">
+        <widget class="QPushButton" name="bt_usb2_dis">
          <property name="text">
-          <string>connect</string>
+          <string>disconnect</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="bt_usb2_dis">
+        <widget class="QPushButton" name="bt_usb2_con">
          <property name="text">
-          <string>disconnect</string>
+          <string>connect</string>
          </property>
         </widget>
        </item>
@@ -5631,16 +5631,16 @@ background-color:rgb(255,255,255)</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QPushButton" name="bt_usb1_con">
+        <widget class="QPushButton" name="bt_usb1_dis">
          <property name="text">
-          <string>connect</string>
+          <string>disconnect</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="bt_usb1_dis">
+        <widget class="QPushButton" name="bt_usb1_con">
          <property name="text">
-          <string>disconnect</string>
+          <string>connect</string>
          </property>
         </widget>
        </item>

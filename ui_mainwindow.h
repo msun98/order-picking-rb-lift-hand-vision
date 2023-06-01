@@ -414,12 +414,12 @@ public:
     QTextEdit *te_usb1;
     QWidget *layoutWidget_2;
     QVBoxLayout *verticalLayout_3;
-    QPushButton *bt_usb2_con;
     QPushButton *bt_usb2_dis;
+    QPushButton *bt_usb2_con;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_4;
-    QPushButton *bt_usb1_con;
     QPushButton *bt_usb1_dis;
+    QPushButton *bt_usb1_con;
     QLabel *label_113;
     QComboBox *cb_usb1;
     QTextEdit *te_usb2;
@@ -2476,15 +2476,15 @@ public:
         verticalLayout_3 = new QVBoxLayout(layoutWidget_2);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        bt_usb2_con = new QPushButton(layoutWidget_2);
-        bt_usb2_con->setObjectName(QString::fromUtf8("bt_usb2_con"));
-
-        verticalLayout_3->addWidget(bt_usb2_con);
-
         bt_usb2_dis = new QPushButton(layoutWidget_2);
         bt_usb2_dis->setObjectName(QString::fromUtf8("bt_usb2_dis"));
 
         verticalLayout_3->addWidget(bt_usb2_dis);
+
+        bt_usb2_con = new QPushButton(layoutWidget_2);
+        bt_usb2_con->setObjectName(QString::fromUtf8("bt_usb2_con"));
+
+        verticalLayout_3->addWidget(bt_usb2_con);
 
         layoutWidget = new QWidget(barcode);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
@@ -2492,15 +2492,15 @@ public:
         verticalLayout_4 = new QVBoxLayout(layoutWidget);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        bt_usb1_con = new QPushButton(layoutWidget);
-        bt_usb1_con->setObjectName(QString::fromUtf8("bt_usb1_con"));
-
-        verticalLayout_4->addWidget(bt_usb1_con);
-
         bt_usb1_dis = new QPushButton(layoutWidget);
         bt_usb1_dis->setObjectName(QString::fromUtf8("bt_usb1_dis"));
 
         verticalLayout_4->addWidget(bt_usb1_dis);
+
+        bt_usb1_con = new QPushButton(layoutWidget);
+        bt_usb1_con->setObjectName(QString::fromUtf8("bt_usb1_con"));
+
+        verticalLayout_4->addWidget(bt_usb1_con);
 
         label_113 = new QLabel(barcode);
         label_113->setObjectName(QString::fromUtf8("label_113"));
@@ -2524,7 +2524,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        motor->setCurrentIndex(1);
+        motor->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -2798,10 +2798,10 @@ public:
         label_111->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; color:#888a85;\">left</span></p></body></html>", nullptr));
         label_112->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600; color:#888a85;\">right</span></p></body></html>", nullptr));
         write->setText(QApplication::translate("MainWindow", "write", nullptr));
-        bt_usb2_con->setText(QApplication::translate("MainWindow", "connect", nullptr));
         bt_usb2_dis->setText(QApplication::translate("MainWindow", "disconnect", nullptr));
-        bt_usb1_con->setText(QApplication::translate("MainWindow", "connect", nullptr));
+        bt_usb2_con->setText(QApplication::translate("MainWindow", "connect", nullptr));
         bt_usb1_dis->setText(QApplication::translate("MainWindow", "disconnect", nullptr));
+        bt_usb1_con->setText(QApplication::translate("MainWindow", "connect", nullptr));
         label_113->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:24pt; font-weight:600; color:#729fcf;\">box barcode reader</span></p></body></html>", nullptr));
         motor->setTabText(motor->indexOf(barcode), QApplication::translate("MainWindow", "barcode", nullptr));
     } // retranslateUi

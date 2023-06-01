@@ -524,25 +524,25 @@ void MainWindow::readyRead_tcp()
 }
 
 
-void MainWindow::connected_seiral()
-{
-    jog_timer.start(100);
-}
+//void MainWindow::connected_seiral()
+//{
+////    jog_timer.start(100);
+//}
 
-void MainWindow::disconnected_seiral()
-{
-    jog_timer.stop();
-}
+//void MainWindow::disconnected_seiral()
+//{
+////    jog_timer.stop();
+//}
 
-void MainWindow::connected_udp()
-{
-    //jog_timer.stop();
-}
+//void MainWindow::connected_udp()
+//{
+//    //jog_timer.stop();
+//}
 
-void MainWindow::disconnected_udp()
-{
-    //jog_timer.stop();
-}
+//void MainWindow::disconnected_udp()
+//{
+//    //jog_timer.stop();
+//}
 
 void MainWindow::readyRead_udp()
 {
@@ -1403,6 +1403,9 @@ void MainWindow::BTN_GRIPPER_CMD_WRITE()
     {
         auto text = ui->LE_GRIPPER_CMD->text();
         qDebug()<<text;
+        std::string msg = text.toUtf8().constData();
+
+        ::send(gripper.tmp_fd, msg.data(), msg.size(), 0);
         QString Log = "[Gripper] cmd : " + text;
         QByteArray br = text.toUtf8();
 
@@ -1421,9 +1424,12 @@ void MainWindow::BTN_GRIPPER_HOLD()
     // preset unfold(gripper ready) pos cmd
     if(Integrated_info.init_gripper == true)
     {
-        QString text1("Rg0");
-        qDebug()<<text1;
-        QByteArray br1 = text1.toUtf8();
+        QString text("Rg0");
+        qDebug()<<text;
+        std::string msg = text.toUtf8().constData();
+        ::send(gripper.tmp_fd, msg.data(), msg.size(), 0);
+
+        QByteArray br1 = text.toUtf8();
 //        gripper.Kitech_Client->write(br1);
     }
 }
@@ -1436,55 +1442,61 @@ void MainWindow::BTN_GRIPPER_ALLFOLD()
     {
         BTN_GRIPPER_HOLD();
 //        gripper.Kitech_Client->flush();//
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-        start_old = clock(); // 시간 측정 시작
-        bool flag_old = true;
+        QString text("Rm9");
+         qDebug()<<text;
+        std::string msg = text.toUtf8().constData();
+        ::send(gripper.tmp_fd, msg.data(), msg.size(), 0);
 
-        //        qDebug()<<"start"<<start;
+//        start_old = clock(); // 시간 측정 시작
+//        bool flag_old = true;
 
-        while(flag_old)
-        {
+//        //        qDebug()<<"start"<<start;
 
-            if(result_old>1000000)
-            {
-                //                Pinch12_FOLD();
-                QString text("Rm9");
-                qDebug()<<text;
-                QString Log = "[Gripper] cmd : " + text;
-                QByteArray br = text.toUtf8();
+//        while(flag_old)
+//        {
 
-                //            _log.PrintLog(Log.toStdString(), ui->TE_GLOBAL_LOG, "green", true);
-//                gripper.Kitech_Client->write(br);
+//            if(result_old>1000000)
+//            {
+//                //                Pinch12_FOLD();
+//                QString text("Rm9");
+//                qDebug()<<text;
+//                QString Log = "[Gripper] cmd : " + text;
+//                QByteArray br = text.toUtf8();
 
-//                gripper.Kitech_Client->flush();//
-                flag_old = false;
-            }
-            end_old = clock(); // 시간 측정 끝
-            result_old = double(end_old-start_old);
+//                //            _log.PrintLog(Log.toStdString(), ui->TE_GLOBAL_LOG, "green", true);
+////                gripper.Kitech_Client->write(br);
 
-        }
-        start = clock(); // 시간 측정 시작
-        bool flag = true;
+////                gripper.Kitech_Client->flush();//
+//                flag_old = false;
+//            }
+//            end_old = clock(); // 시간 측정 끝
+//            result_old = double(end_old-start_old);
 
-        //        qDebug()<<"start"<<start;
+//        }
+//        start = clock(); // 시간 측정 시작
+//        bool flag = true;
 
-        while(flag)
-        {
+//        //        qDebug()<<"start"<<start;
 
-            if(result>300)
-            {
-                QString text("Gg9");
-                qDebug()<<text;
-                QString Log = "[Gripper] cmd : " + text;
-                QByteArray br = text.toUtf8();
+//        while(flag)
+//        {
 
-                //            _log.PrintLog(Log.toStdString(), ui->TE_GLOBAL_LOG, "green", true);
-//                gripper.Kitech_Client->write(br);
-                flag = false;
-            }
-            end = clock(); // 시간 측정 끝
-            result = double(end-start);
-        }
+//            if(result>300)
+//            {
+//                QString text("Gg9");
+//                qDebug()<<text;
+//                QString Log = "[Gripper] cmd : " + text;
+//                QByteArray br = text.toUtf8();
+
+//                //            _log.PrintLog(Log.toStdString(), ui->TE_GLOBAL_LOG, "green", true);
+////                gripper.Kitech_Client->write(br);
+//                flag = false;
+//            }
+//            end = clock(); // 시간 측정 끝
+//            result = double(end-start);
+//        }
 
     }
     else
@@ -1579,6 +1591,9 @@ void MainWindow::CB_GRIPPER_GE_CMD_WRITE()
         auto powe = ui->CB_GRIPPER_GE_POWER->currentText();
 
         QString text = mode  + grap + powe;
+        std::string msg = text.toUtf8().constData();
+
+        ::send(gripper.tmp_fd, msg.data(), msg.size(), 0);
         //        ControlBoxDigitalOut(1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
         qDebug()<<text;
         QString Log = "[Gripper] cmd : " + text;
